@@ -6,8 +6,8 @@ from .indicators import *
 from .strategy import *
 from .calculations import get_next_trading_day
 from .config import *
-def simulate_investment(
-    ticker, sell_fraction, start_date, end_date, investment, f_star=1, signal='macd'
+def simulate_investment_buy_sell(
+    ticker, start_date, end_date, investment, f_star=1, signal='macd', sell_fraction=1
 ):
     try:
         # Initialize trade counters and portfolio metrics
@@ -98,7 +98,11 @@ def simulate_investment(
         data['Number_of_Buying_Trades'] = number_of_buying_trades
         data['Number_of_Selling_Trades'] = number_of_selling_trades
         # Ensure the column 'value' is directly modified in the original DataFrame
-        data[f'value_{ticker}'] = data[f'value_{ticker}'].apply(lambda x: np.nan if pd.notna(x) and x < 1000000 else x)
+        for i in range(len(data) - 1):  # Avoid index out of bounds for i+1
+            if data['Signal'].iloc[i] != 0:  # Use iloc to access a single value
+                data.loc[data.index[i], f'value_{ticker}'] = np.nan
+                data.loc[data.index[i + 1], 'value_{ticker}'] = np.nan
+
         data[f'value_{ticker}'] = data[f'value_{ticker}'].ffill()
 
         data['Daily_Return'] = data[f'value_{ticker}'].pct_change()

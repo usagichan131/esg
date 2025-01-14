@@ -86,7 +86,7 @@ def simulate_investment(
         for i in range(len(data) - 1):  # Avoid index out of bounds for i+1
             if data['Signal'].iloc[i] != 0:  # Use iloc to access a single value
                 data.loc[data.index[i], f'value_{ticker}'] = np.nan
-                data.loc[data.index[i + 1], 'value_{ticker}'] = np.nan
+                data.loc[data.index[i + 1], f'value_{ticker}'] = np.nan
 
         data[f'value_{ticker}'] = data[f'value_{ticker}'].ffill()
 

@@ -22,24 +22,24 @@ OBV_PERIOD = 5
 # Configuration for different trading strategies
 STRATEGY_CONFIG = {
     "MACD": {
-        "win_rate": 0.5711907018,
-        "loss_rate": 1 - 0.5711907018,
-        "mean_profit": 0.3493357553,
-        "mean_loss": 0.1397008027,
+        "win_rate": 0.532285939894299,
+        "loss_rate": 1 - 0.532285939894299,
+        "mean_profit": 0.359764659,
+        "mean_loss": 0.170075372,
         "stop_loss": None  # Stop loss not defined for MACD
     },
     "OBV": {
-        "win_rate": 0.525862069,
-        "loss_rate": 1 - 0.525862069,
-        "mean_profit": 0.1539675969,
-        "mean_loss": 0.2086126,
+        "win_rate": 0.509166666666667,
+        "loss_rate": 1 - 0.509166666666667,
+        "mean_profit": 0.243651099993333,
+        "mean_loss": 0.19957972326,
         "stop_loss": 0.08  # Specific stop loss for OBV
     },
     "BB": {
-        "win_rate": 0.7070060208,
-        "loss_rate": 1 - 0.7070060208,
-        "mean_profit": 0.1721618831,
-        "mean_loss": 0.1082770633,
+        "win_rate": 0.729516526358632,
+        "loss_rate": 1 - 0.729516526358632,
+        "mean_profit": 0.130446085128571,
+        "mean_loss": 0.182372842526667,
         "stop_loss": 0.08  # Specific stop loss for BB
     }
 }
